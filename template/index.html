@@ -1,14 +1,30 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
 {% block title %}歡迎光臨我的部落格{% endblock title %}
 {% block headmessage %}
 <h3 style='font-family:標楷體;'>本站文章列表</a>
 {% endblock headmessage %}
-{% block content %}
-{% for post in posts %}
-<p style="font-family:微軟正黑體;font-size:14pt;font-weight:bold;">      
-    <a href="/post/{{post.slug}}">{{post.title}}</a> <!--超連結-->
-</p>
-{% endfor %}
-{% endblock content %}
+{% block content %} <!--顯示區 物件導向去處理-->
+{% for post in posts %} <!--迴圈-->
+    <div class='card'> <!--用card顯示-->
+        <div class='card-header'>
+            <p style='font-family:微軟正黑體;font-size:14pt;font-weight:bold;'>
+                <a href='/post/{{post.slug}}'>{{ post.title }}</a><!--超連結-->
+            </p>
+        </div>
+        <div class='card-body' style='background-color:#ffffdd'> <!--改背景顏色-->
+            <p>
+               {{ post.body | truncatechars:40 }}
+            </p>
+        </div>
+        <div class='card-footer'  style='background-color:#efefef'>
+            <p>
+                發佈時間：{{ post.pub_date | date:"Y M d, h:m:s"}}
+            </p>
+        </div>
+    </div>
+    <br> <!--每輸出一次就換行-->
+    {% endfor %}
+{% endblock %}
+
 
 <!DOCTYPE html>

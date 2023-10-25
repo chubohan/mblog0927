@@ -55,7 +55,7 @@ ROOT_URLCONF = 'mblog0927.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'template'],
+        'DIRS': [BASE_DIR/'template'], #加網站
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -115,6 +115,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
+#設定static(圖片)
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = (
+    BASE_DIR / 'static',
+    "/var/www/static/",
+)
+
+
 
 STATIC_URL = 'static/'
 
