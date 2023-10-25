@@ -12,14 +12,9 @@ def homepage(request):
     #傳給index.html locals把變數集合(後端)
 
 def showpost(request,slug):
-    try: 
-        post=Post.objects.get(slug=slug) #看網站選到哪裡傳到slug變數
-        if post != None: #post是超連結之後連到的網站
-            return render(request,'post.html',locals())
-        else:
-            return redirect("/") #導到首頁
-    except:
-        return redirect("/") #redirect轉址
+    post=Post.objects.get(slug=slug) #看網站選到哪裡傳到slug變數
+    if post != None: #post是超連結之後連到的網站
+        return render(request,'post.html',locals())
 '''
 def homepage(requset):  #網站設參數給view
     posts=Post.objects.all() 
